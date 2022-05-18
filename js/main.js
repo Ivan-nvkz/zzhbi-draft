@@ -252,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
    const iconMenu = document.querySelector(".icon-menu");
    const menuBody = document.querySelector(".menu__list");
    const searchHeaderInput = document.querySelector('.search-header__input');
+   const searchHeaderButton = document.querySelector('.search-header__button');
 
    if (iconMenu) {
       iconMenu.addEventListener("click", function (e) {
