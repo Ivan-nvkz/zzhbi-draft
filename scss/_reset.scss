@@ -1,0 +1,88 @@
+// Миксин для адаптации шрифтов старт  ========================================================
+$maxWidth: 1300;
+$maxWidthContainer: 1300;
+
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+   $addSize: $startSize - $minSize;
+   @if $type==1 {
+      //Только если меньше контейнера
+      #{$property}: $startSize + px;
+      @media (max-width: #{$maxWidthContainer + px}) {
+         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+      }
+   } @else if $type==2 {
+      //Только если больше контейнера
+      #{$property}: $startSize + px;
+      @media (min-width: #{$maxWidthContainer + px}) {
+         #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+      }
+   } @else {
+      // Всегда
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+   }
+}
+
+// Миксин для адаптации шрифтов  финиш ============================================================
+
+// Переменные для цвета старт =====================================================================
+$textColor: #ccc;
+$bgColor: #f7f7f4;
+$default: #111;
+
+// Переменные для цвета финиш =====================================================================
+// Обнуление   ====================================================================================
+
+html {
+   box-sizing: border-box;
+   height: 100%;
+}
+
+*,
+*::after,
+*::before {
+   box-sizing: inherit;
+}
+
+ul[class],
+ol[class] {
+   padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+   margin: 0;
+}
+
+ul[class] {
+   list-style: none;
+}
+
+img {
+   max-width: 100%;
+   display: block;
+}
+
+input,
+button,
+textarea,
+select {
+   font: inherit;
+}
+
+a {
+   text-decoration: none;
+}
